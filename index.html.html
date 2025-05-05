@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MUNDEPORTES</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+
+    header {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      background-color: #444;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .tab {
+      padding: 15px 30px;
+      cursor: pointer;
+      color: white;
+      background-color: #444;
+      border: none;
+      outline: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .tab:hover, .tab.active {
+      background-color: #222;
+    }
+
+    .tab-content {
+      display: none;
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .news-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      width: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .news-item {
+      height: 250px;
+      background-color: white;
+      border: 2px solid #ccc;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .news-item:hover {
+      transform: scale(1.05);
+      box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .news-item a {
+      font-weight: bold;
+      font-size: 1rem;
+      color: #004080;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .news-item a:hover {
+      color: #0066cc;
+    }
+
+    .news-item p {
+      font-size: 0.8em;
+      color: gray;
+      margin-top: 10px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>EL MUNDO DEL DEPORTE</h1>
+    <button onclick="toggleLogoBar()" style="margin-top: 5px; padding: 5px 10px; font-size: 1rem; cursor: pointer;">Un vistazo</button>
+    <script>
+      function toggleLogoBar() {
+      const logoBar = document.getElementById('logo-bar');
+      logoBar.style.display = logoBar.style.display === 'none' ? 'flex' : 'none';
+      }
+    </script>
+    <div id="logo-bar" style="text-align: center; margin: 20px 0; display: flex; justify-content: center; gap: 20px;">
+      <a href="https://www.youtube.com/watch?v=wg0-HEcgdo8" target="_blank" rel="noopener noreferrer">
+      <img src="Imagenes/219.png" alt="EL MAS GRANDE" style="height: 100px; width: auto; cursor: pointer;">
+      </a>
+      <a href="https://www.youtube.com/watch?v=ftecBmF1vH4" target="_blank" rel="noopener noreferrer">
+      <img src="Imagenes/FC_Barcelona_(crest).svg.png" style="height: 100px; width: auto; cursor: pointer;">
+      </a>
+      <a href="https://www.youtube.com/watch?v=d5uS9VP6gBk" target="_blank" rel="noopener noreferrer">
+      <img src="Imagenes/Real-madrid-escudo.webp" style="height: 100px; width: auto; cursor: pointer;">
+      </a>
+      <a href="https://www.youtube.com/watch?v=pRNpfRXPeLo" target="_blank" rel="noopener noreferrer">
+      <img src="Imagenes/Los_Angeles_Lakers_logo.svg.webp" style="height: 100px; width: auto; cursor: pointer;">
+      </a>
+      <a href="https://www.youtube.com/watch?v=dRlRO3D4kcw" target="_blank" rel="noopener noreferrer">
+        <img src="Imagenes/61f6vbMgWML._AC_UF894,1000_QL80_.jpg" alt="NBA" style="height: 100px; width: auto; cursor: pointer;">
+      </a>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab active" role="tab" aria-selected="true" onclick="cambiarTab(0)">INICIO</button>
+    <button class="tab" role="tab" aria-selected="false" onclick="cambiarTab(1)">DEPORTES</button>
+    <button class="tab" role="tab" aria-selected="false" onclick="cambiarTab(2)">INFORMACIÓN GENERAL</button>
+  </nav>
+
+  <div class="tab-content active" id="inicio">
+    <div class="news-section">
+      <h2>NOTICIAS</h2>
+      <div id="mundo"></div>
+      <div id="cnn"></div>
+    </div>
+  </div>
+
+  <div class="tab-content" id="deportes">
+    <h2>SECCIÓN DEPORTES</h2>
+    <p>De la gran cantidad de deportes que existen en el mundo, aqui solo pondremos los mas importantes</p>
+    <div id="ARRIBA" style="text-align: center; margin: 20px 0;"></div>
+    <a href="#FUTBOL">FUTBOL</a><br>
+    <a href="#BASQUET">BASQUETBOL</a><br>
+    <a href="#FAMERICANO">FUTBOL AMERICANO</a><br>
+    <a href="#BOX">BOXEO</a><br>
+    <a href="#BEIS">BEISBOL</a><br>
+    <a href="#VOLI">VOLEIBOL</a><br>
+    <a href="#CICL">CICLISMO</a><br>
+    <a href="#GOLF">GOLF</a><br>
+    <a href="#TENIS">TENIS</a><br>
+
+    <a id="FUTBOL"><h1>FUTBOL</h1></a>
+        <img src="Imagenes/FUT.jpg" align="middel" height="80" width="80">
+        <h3>¿Qué es Fútbol?</h3>
+    <p>El fútbol se define en primer lugar como un juego que incluye dos contrincantes y un árbitro con la capacidad de imponer justicia imparcial. Cada contrincante está compuesto por un equipo de 11 jugadores en campo de juego cada uno, con la opción de incluir jugadores suplentes en el transcurso del partido de fútbol.</p>
+    <p>El objetivo es hacer rodar un balón esférico con el fin de anotar un punto, cuya anotación es válida al cruzar la línea límite del arco contrario. Cada punto logrado es conocido como gol, por lo tanto el equipo que más goles sume en el transcurso de 90 minutos (tiempo neto de un partido) será el ganador.
+        Cada equipo deberá de incluir en su plantilla un arquero o portero, único jugador capaz de tocar el balón con las manos y con la tarea de impedir que el balón cruce su propio arco; un grupo de defensores; un grupo de volantes y finalmente un grupo de delanteros. Las tácticas de cada plantilla pueden variar en preferencia del director técnico a cargo del equipo de fútbol.</p>
+    <h3>Principales reglas del fútbol</h3>
+    <ul>
+        <li>Saque lateral. Una vez que el balón haya traspasado una línea lateral, se deberá proceder a tomar el balón con la mano para volver a ponerlo en juego.</li>
+        <li>Saque de meta. Una vez que el balón haya traspasado la línea frontal, habiendo sido tocada por última vez por un equipo en campo de juego rival, el arquero rival deberá poner el esférico en juego desde su arco.</li>
+        <li>Tiro de esquina. Una vez que el balón haya traspasado la línea frontal y haya sido tocado por última vez por un equipo en campo propio, se le concederá al rival reanudar el juego con un saque del balón desde el vértice correspondiente.</li>
+        <li>Tarjeta amarilla. Quedará a criterio del árbitro sancionar a un jugador con tarjeta amarilla al cometer un infracción un jugador.</li>
+        <li>Tarjeta roja. Un jugador verá la tarjeta roja al recibir dos tarjetas amarillas y deberá abandonar el campo de juego de inmediato. También se puede sancionar con tarjeta roja directa.</li>
+    </ul>
+    <h3>El campo de juego</h3>
+    <p>El terreno de juego para practicar fútbol profesional deberá reunir ciertas condiciones establecidas por la autoridad deportiva conocida como FIFA (Federación Internacional de Fútbol Asociación). Estas condiciones son:</p>
+    <ul>
+        <li>Tendrá que incluir césped natural o artificial de forma rectangular.</li>
+        <li>Medidas establecidas de largo. mínimo 90 metros, máximo 120 metros.</li>
+        <li>Medidas establecidas de ancho. mínimo 45 metros, máximo 90 metros.</li>
+        <li>Los arcos deberán medir hasta 2,44 metros, con 7,32 metros de separación entre un palo lateral y el otro.</li>
+    </ul>
+    <a href="#ARRIBA">VOLVER ARRIBA</a><br>
+
+    <a id="BASQUET"><h1>BASQUETBOL</h1></a>
+        <img src="Imagenes/basquet.jpg" align="middel" height="80" width="80">
+        <h3>¿Qué es el básquetbol?</h3>
+        <p>El baloncesto, basquetbol o básquetbol (castellanización de basketball, en inglés) es un deporte en equipo, en el que dos bandos de jugadores se enfrentan y tienen como objetivo hacer entrar un balón en el aro del equipo contrario. Gana el juego el equipo que más anotaciones o “canastas” haga.</p>
+        <p>La cancha de básquetbol es una superficie plana, interior o exterior, que tiene un aro en cada extremo suspendido a unos tres metros de altura. Cada vez que un equipo realiza una canasta, suma puntos. Cada canasta tiene distinto puntaje de acuerdo al lugar de la cancha desde el que se realiza el tiro.</p>
+        <p>El básquetbol es uno de los deportes más practicados en la actualidad por equipos de hombres y mujeres, tanto de forma profesional como amateur. La liga más reconocida de básquetbol es la NBA, una liga privada estadounidense en la que juegan equipos como Los Angeles Lakers y los Chicago Bulls. Además, existen otras variantes de este deporte, como baloncesto en silla de ruedas, el streetball y el baloncesto 3×3.</p>
+        <p>La Federación Internacional de Baloncesto (FIBA) es el ente regulador de la práctica de este deporte en el mundo entero y la encargada de organizar competiciones oficiales. El básquetbol es deporte olímpico desde 1936.</p>
+
+        <h3>Características del básquetbol</h3>
+        <p>Las principales características del básquetbol son:</p>
+        <ul>
+          <li>Objetivo. El objetivo del juego es atravesar con el balón el aro del equipo contrario, tantas veces como sea posible, para acumular puntos. El equipo con más puntos al final del partido, gana.</li>
+          <li>Anotaciones. Cada canasta corresponde a una anotación, pero las canastas tienen distinto puntaje de acuerdo al lugar de la cancha desde el que se realiza el tiro. Una canasta vale dos puntos si se realiza dentro de la línea de tres puntos (a 6,75 m del aro), tres puntos si es de larga distancia y un punto si es un tiro libre.</li>
+          <li>Campo de juego. La cancha de básquetbol es un rectángulo que mide 28 metros por 15 y tiene una canasta en cada extremo.</li>
+          <li>Duración. El juego dura cuatro períodos de diez minutos cada uno, con la posibilidad de un tiempo extra de cinco minutos en caso de que exista un empate en la puntuación.</li>
+          <li>Equipos. Se enfrentan dos equipos de máximo doce jugadores cada uno. Solo puede haber cinco jugadores de un equipo simultáneamente en la cancha.</li>
+          <li>Árbitros. Durante el partido intervienen: un árbitro principal, un árbitro auxiliar y los árbitros de mesa. El árbitro tiene como función dar inicio y final al partido, impartir sanciones y controlar el juego.</li>
+        </ul>
+        <h3>Reglas del básquetbol</h3>
+        <p>Las reglas del básquetbol son elaboradas y modificadas por la FIBA (Federación Internacional de Baloncesto). En algunos casos, estas reglas difieren de las usadas en algunas ligas como la NBA (National Basketball Association) o la WNBA (Women’s National Basketball Association).</p>
+        <p>El básquetbol internacional se rige por las siguientes reglas fundamentales:</p>
+        <ul><h4>Juego</h4>
+          <li>En un partido se enfrentan dos equipos de doce jugadores cada uno.</li>
+          <li>El juego comienza con un salto entre dos jugadores de ambos equipos en el centro de la cancha.</li>
+          <li>Los equipos pueden hacer tantas sustituciones como deseen.</li>
+          <li>Cuando un equipo tenga posesión del balón, tendrá 24 segundos para intentar un tiro al aro.</li>
+          <li>Un jugador no podrá permanecer en la zona restringida del aro del contrincante durante más de tres segundos para el ataque.</li>
+          <li>El jugador no podrá driblar, detenerse y luego continuar driblando. En ese caso, tiene dos pasos para intentar un tiro al aro o pasar el balón a un compañero.</li>
+          <li>Una vez que un equipo pasa la línea de mitad de cancha, no podrá volver para atrás.</li>
+        </ul>
+        <ul><h4>Faltas</h4>
+          <li>Los contactos ilegales entre contrincantes son considerados faltas personales y acarrean sanciones individuales y colectivas.</li>
+          <li>Un jugador puede cometer cinco faltas en un partido.</li>
+          <li>Un equipo solo podrá hacer cuatro faltas en cada cuarto. En caso de superar este número, se le otorgarán al equipo rival dos tiros libres.</li>
+          <li>Los tiros libres también son otorgados cuando se le comete una falta a un jugador durante el lanzamiento.</li>
+        </ul>
+        <ul><h4>Puntaje</h4>
+          <li>Gana el equipo que obtiene mayor cantidad de puntaje, el puntaje se logra encestando el balón en el aro del equipo contrario.</li>
+          <li>Un partido de básquetbol no puede terminar en empate, por lo que al finalizar el partido se otorgan sucesivos tiempos extra de cinco minutos hasta que algún equipo se haga con la delantera.</li>
+          <li>Las canastas valen tres puntos cuando el lanzamiento se realiza por fuera de la línea de tres puntos, dos puntos cuando el lanzamiento se realiza por dentro de la línea de tres puntos y un punto cuando el lanzamiento es de tiro libre.</li>
+        </ul>
+        <ul><h4>Tiempo</h4>
+          <li>El juego dura cuatro períodos de diez minutos cada uno, con la posibilidad de un tiempo extra de cinco minutos en caso de que exista un empate en la puntuación. En la NBA los cuartos duran doce minutos cada uno.</li>
+          <li>El tiempo se para cada vez que el balón no está en juego.</li>
+          <li>El tiempo muerto es un tiempo de un minuto que puede ser pedido por alguno de los dos entrenadores para que su equipo se reúna en el banco.</li>
+        </ul>
+
+        <h3>Elementos del básquetbol</h3>
+        <p>Los principales elementos para la práctica de básquetbol son:</p>
+        <h4>Cancha</h4>
+        <p>La cancha de básquetbol tiene forma rectangular y debe ser llana y estar libre de obstáculos. Mide 15 metros de ancho por 28 de largo y está dividida en dos porciones por una línea al medio, en la que hay un círculo de 3,6 metros de diámetro.</p>
+        <p>En cada extremo de la cancha hay un aro, suspendido a unos 3 metros del suelo, que está ubicado en un área semicircular de 4,9 x 8,32 metros y que separa el área de tiro de 2 puntos del área de tiro de 3 puntos.</p>
+
+        <h4>Canasta</h4>
+        <p>La canasta de básquetbol está formada por un aro (con una red), en el que se introduce el balón para realizar anotaciones. El aro de básquetbol está sujetado al tablero, que mide 1,05 de alto por 1,80 de largo. La canasta debe estar ubicada a 3,05 m del suelo y su aro debe estar hecho en acero y unido a la red por doce puntos.</p>
+
+        <h4>Balón</h4>
+        <p>El balón de básquetbol tiene una forma esférica y su tamaño varía de acuerdo a la categoría y tipo de juego. Los balones de básquetbol profesional masculino miden entre 75 y 78 cm y los balones de básquetbol profesional femenino miden entre 72 y 74 cm.</p>
+        <p>Son balones con una gran capacidad de rebote y suelen estar formados por una cámara recubierta de materiales como cuero, goma o algún otro material sintético de superficie rugosa. El color más usado en balones de básquetbol es el naranja, pero los hay de muchos colores, como negro o blanco, azul y rojo.</p>
+
+        <h4>Indumentaria</h4>
+        <p>Los jugadores de básquetbol tienen un uniforme que suele consistir en una camiseta numerada sin mangas (o de manga corta, no está permitida la camiseta de manga larga), pantalones cortos y zapatillas.</p>
+
+        <a href="#ARRIBA">VOLVER ARRIBA</a><br>
+
+    <a id="FAMERICANO"><h1>FUTBOL AMERICANO</h1></a>
+        <img src="Imagenes/futbol-americano.jpg" align="middel" height="80" width="80">
+        <p>El fútbol americano o fútbol estadounidense es un deporte de conjunto conocido por mezclar complejas estrategias y un juego físico muy intenso. Nació hace más de 100 años en los Estados Unidos. Es uno de los deportes de impacto más competitivos del mundo donde el jugador requiere de una gran disciplina, entrenamiento físico y preparación mental. La mayor manifestación competitiva y mediática de este deporte se da en la National Football League (NFL), la liga de fútbol americano profesional de Estados Unidos.</p>
+        <h3>Tiempo de juego</h3>
+        <p>Un encuentro se divide en cuatro cuartos de 15 minutos cada uno con un descanso de la misma duración al término de los dos primeros. Entre el primero y el segundo y el tercero y el cuarto cuartos se hace una pequeña pausa para que los equipos cambien de campo pero no se modifica la continuidad del juego. Al inicio del nuevo periodo el equipo que se encontraba atacando conserva su posición en el terreno de juego pero del lado opuesto del campo. Al término de la primera mitad el juego se detiene y al reanudarse después del descanso iniciará con una nueva patada de despeje.</p>
+        <h3>Final de un partido</h3>
+        <p>El equipo que al término de los cuatro periodos haya conseguido la mayor cantidad de puntos será el vencedor. Si al término de los cuatro cuartos el marcador está en empate se jugará una prórroga de 15 minutos. El primer equipo que consiga sumar puntos dentro de este tiempo ganará el partido. Si al término del tiempo extra ningún equipo ha conseguido puntos el partido terminará definitivamente en empate.</p>
+        <h3>Down</h3>
+        <p>Se entiende por down u oportunidad el periodo comprendido entre la puesta en juego del balón y el fin de la jugada. Las dos formas básicas de desarrollar una jugada en el fútbol americano son con ataques terrestres (acarreando el balón) o con ataques aéreos (lanzando pases).</p>
+        <p>El fin de una jugada está condicionado a diferentes circunstancias, siendo las comunes cuando un pase no tiene éxito (pase incompleto), cuando el jugador que lleva el balón es derribado por un contrario dentro del terreno de juego o bien cuando sale del mismo por las bandas ya sea por decisión propia o por ser empujado por un contrario.</p>
+        <h3>Primer down o primero y diez</h3>
+        <p>Un equipo dispone de cuatro oportunidades para mover el balón al menos diez yardas y así lograr el derecho de conservar el balón por al menos otros cuatro downs. Cuando un equipo consigue el avance mínimo de diez yardas dentro de su bloque de cuatro downs, obtiene automáticamente un nuevo primer down para avanzar de nueva cuenta diez yardas, es decir consigue un Primero y Diez. Buscando conservar la posesión del balón mediante la obtención de primeros y dieces y tratando de avanzar la mayor cantidad de yardas posibles en cada jugada, el equipo se desplazará hacia la zona de anotación contraria hasta encontrar la oportunidad de usar uno de sus downs para anotar.</p>
+        <h3>Cuarto down</h3>
+        <p>Si un equipo no lograra conseguir la posición de campo requerida para tener derecho a otras 4 jugadas en los cuatro intentos de los que dispone, el equipo contrario tomaría posesión del balón en el mismo punto donde el primer equipo haya finalizado su serie ofensiva.</p>
+        <p>Las probabilidades de conseguir las yardas faltantes para el primero y diez en la cuarta oportunidad son pocas, por este motivo los equipos suelen utilizar únicamente tres oportunidades para buscar este objetivo. En su cuarta oportunidad, el equipo puede arriesgarse y realizar una jugada para intentar ganar las yardas que le faltan, o bien recurrir a una de las opciones siguientes:</p>
+        <ul>
+          <li>Punt (Patada de despeje): Se usa cuando un equipo llega al cuarto down y se encuentra muy alejado de la zona de anotación rival para intentar anotar un field goal o está demasiado cerca de su propia zona de anotación, por lo que sería arriesgado desperdiciar su último down y entregar el balón en ése punto del terreno de juego. En este caso la patada de despeje sirve para entregar el balón lo más alejado posible de su propio campo de juego y provocar así que el equipo que recibe el balón tenga que recorrer de nuevo una gran parte del campo para buscar una anotación. Cuanta mayor sea la distancia que un equipo debe recorrer, más jugadas requerirá y más difícil será anotar.
+          </li>
+          <li>Field goal (Gol de campo): Si un equipo llega a un cuarto down y se encuentra cerca de la zona de anotación rival entonces tiene la opción de buscar un gol de campo pateando el balón para introducirlo entre los goalposts. Está jugada es para no desperdiciar del todo una serie ofensiva y conseguir al menos tres puntos de los seis que se buscaron originalmente. A diferencia del touchdown, el field goal no otorga el derecho de buscar puntos extra.</li>
+        </ul>
+        <p>No existe una regla que obligue a los equipos a usar sus oportunidades de alguna manera en particular así que cada equipo decide lo que hace con cada una de ellas. Las decisiones que toman los equipos dependen de varios factores entre los que se encuentran el marcador, el tiempo restante del que disponen y la posición en el campo, entre otras.</p>
+        <h3>Reglas del Futbol Americano</h3>
+        <p>El Futbol Americano es de los mas populares en America del norte y grandes equipos compiten por ser el mejor. Aveces escuchamos hablar de este deporte y nos dan las ganas de practicarlo y ser como Mark Sanchez y jugar como titular de los Jets de Nueva York o simplemente cualquier otro equipo de futbol, Pero para ello necesitamos conocer un poco las reglas básicas de este deporte como lo son:</p>
+        <ul>
+          <li>El campo mide 57 yardas de ancho y 120 de largo, de las cuales 20 (10 en cada extremo) , están destinadas a las end zones y el campo esta marcado cada 5 yardas con una linea continua y cada 10 con un numero.</li>
+          <li>En el campo se encontraran 11 jugadores de cada equipo, el que tiene el balón en su posesión se llamara ofensiva y el que no defensiva.</li>
+          <li>El juego consiste en llevar el balon hasta el final del campo (endzone) del equipo contrario.</li>
+          <li>
+            <ul><h4>Las formas de anotar son (con su respectivo puntaje):</h4>
+              <li>Touchdown: 6 puntos, consiste en llegar con el balón hasta la endzone del equipo contrario.</li>
+              <li>Field goal: 3 puntos, Gol de campo, consiste en hacer pasar el balón por entre los postes ubicados en la endzone.</li>
+            </ul>
+          </li>
+          <li>
+            <ul><h4>Extra Point: luego de anotar un touchdown, el equipo atacante tiene dos opciones:</h4>
+              <li>1.- 1 punto ,Patear el balon entre los postes con un field goal.</li>
+              <li>2.- 2 puntos, intentar llevar el balon nuevamente hasta la endzone desde la yarda 1 del equipo contrario.</li>
+              <li>Safety: 2 puntos, casi nunca se ve, consiste en hacer caer a un jugador que tenga el balón en sus manos de la ofensiva dentro de su propio endzone.</li>
+            </ul>
+          </li>
+
+        </ul>
+        <a href="#ARRIBA">VOLVER ARRIBA</a>
+
+    <a id="BOX"><h1>BOXEO</h1></a>
+        <img src="Imagenes/Box.jpg" align="middel" height="80" width="80">
+        <h3>¿Qué es el boxeo?</h3>
+        <p>El boxeo es una forma de combate cuerpo a cuerpo sin armas en el que un deportista intenta conectar golpes en la cabeza o el cuerpo (por encima de la altura de la cintura) de su oponente para sumar puntos (según decidan los jueces) o conseguir que dicho oponente no pueda continuar.</p>
+        
+        <h3>¿Quién, dónde y cuándo inventó el boxeo?</h3>
+        <p>Los primeros vestigios del boxeo se remontan al antiguo Egipto, alrededor del año 3.000 a.C., pero no fue hasta el siglo XVI cuando empezaron a surgir los combates a mano limpia o 'prizefighting', sobre todo en Gran Bretaña.</p>
+        <p>Las reglas del Marqués de Queensberry se publicaron en 1867, codificando por primera vez el boxeo y obligando a utilizar guantes de boxeo.</p>
+
+        <h3>¿Cuáles son las reglas del boxeo?</h3>
+        <p>El boxeo se disputa en un 'ring' o cuadrilátero -un espacio cuadrado con lados de entre 4,9 m y 7,3 m de longitud y cuerdas entre las cuatro esquinas - situado sobre una lona elevada.</p>
+        <p>Los dos boxeadores se enfrentan a lo largo de varios asaltos que suelen durar tres minutos. Un 'referee' dirige el combate y puede detenerlo si considera que uno de los boxeadores no puede continuar. También puede suspender el combate temporalmente para permitir que se atiendan los cortes o se ajuste la equipación.</p>
+        <p>Si un boxeador acaba en la lona, se denomina nocaut y el 'referee' empieza a contar hasta 10. Si el boxeador no supera la cuenta, es noqueado. El árbitro también puede conceder una cuenta de ocho si considera que un boxeador ha recibido un golpe lo suficientemente fuerte como para requerir un descanso.</p>
+        <p>Los jueces puntúan cada asalto por separado, con 10 puntos para el boxeador que, en su opinión, haya sido mejor en términos de potencia y precisión de sus golpes, aunque también se suele premiar la agresividad. El perdedor del asalto suele sumar nueve puntos, pero pueden ser ocho si el ganador ha sido muy dominante o ha conseguido un nocaut. Si el combate llega hasta el final, las tarjetas de puntuación decidirán quién ha ganado.</p>
+
+        <a href="#ARRIBA">VOLVER ARRIBA</a>
+
+    <a id="BEIS"><h1>BEISBOL</h1></a>
+        <img src="Imagenes/BEis.jpg" align="middel" height="80" width="80">
+        <p>El béisbol es un deporte de bate y pelota jugado en un campo por dos equipos uno contra el otro. En el béisbol, un jugador de un equipo lanza una pelota pequeña y redonda a un jugador del otro equipo, quien trata de golpearla con un bate. Luego, el jugador que golpea la pelota tiene que correr alrededor del campo. Los jugadores obtienen carreras corriendo en un círculo completo alrededor de tres puntos en el suelo llamados bases, para volver al lugar donde comenzaron, que se llama plato de home. Tienen que hacer esto sin ser atrapados por los jugadores del otro equipo.
+          El béisbol comenzó en los Estados Unidos en los años 1700 y 1800. Muchas personas en América del Norte, América del Sur y el este de Asia juegan béisbol, pero el deporte es más conocido en los Estados Unidos y Japón. En los EE. UU., el béisbol se conoce como el pasatiempo nacional, porque muchas personas en los Estados Unidos solían pasar mucho tiempo jugando o viendo partidos de béisbol. Hoy, sin embargo, la mayoría de los estadounidenses siguen más el fútbol que el béisbol, especialmente cuando llega el Super Bowl.</p>
+
+          <h3>Las posiciones de los jugadores en el béisbol</h3>
+          <ul>
+            <li>Lanzador (Pitcher).</li>
+            <li>Receptor (Catcher).</li>
+            <li>Primera base (First baseman).</li>
+            <li>Segunda base (Second baseman, aunque se le conoce como el defensor de la segunda base, hace la misma función del campocorto colocándose entre segunda y primera).</li>
+            <li>Tercera base (Third baseman)</li>
+            <li>Campocorto, parador en corto (Short stop, jugador que se encuentra entre tercera y segunda, y que de igual forma defiende la segunda base).</li>
+            <li>Jardinero izquierdo o exterior izquierdo (Left fielder).</li>
+            <li>Jardinero central o exterior central (Center fielder).</li>
+            <li>Jardinero derecho o exterior derecho (Right fielder).</li>
+            <li>Bateador designado (es una posición del béisbol utilizada por algunas ligas, que permite seleccionar a un jugador para que batee en lugar del lanzador, pero no ocupa ninguna posición defensiva en el campo).</li>
+          </ul>
+
+            <h3>¿Cómo se juega el béisbol?</h3>
+            <p>Un partido de béisbol se divide en nueve periodos de juego, cada uno se llama inning (entrada). El equipo que anote más carreras a lo largo de las nueve entradas gana el partido.</p>
+            <p>El juego comienza cuando un jugador, denominado pitcher (lanzador), lanza la bola hacia el bateador del equipo contrario, quien intenta batear (golpear con el bate) la bola hacia el interior del terreno de juego. Los jugadores anotan carreras bateando la bola y corriendo alrededor de una serie de bases, antes de que les elimine algún jugador de campo del equipo contrario.</p>
+        <a href="#ARRIBA">VOLVER ARRIBA</a>
+
+    <a id="VOLI"><h1>VOLEIBOL</h1></a>
+        <img src="Imagenes/voli.jpg" align="middel" height="80" width="80">
+          <h3>¿Qué es el voleibol?</h3>
+          <p>El voleibol es un deporte que se practica en una pista por dos equipos de seis jugadores. Originalmente se llamaba 'Mintonette', nombre derivado del juego del bádminton, por su parecido con este deporte.</p>
+          <h3>¿Quién, dónde y cuándo se inventó el voleibol?</h3>
+          <p>William G. Morgan, director de educación física de la YMCA y estudiante del Springfield College, fue el creador del voleibol en 1895 en Holyoke, Massachusetts.</p>
+          <p>El 'mintonette' (como se llamaba el voleibol en aquella época) se concibió como un pasatiempo bajo techo del que pudieran disfrutar los miembros más veteranos de la YMCA, y tomó algunas de sus características de otros deportes, como el tenis y el balonmano.</p>
+          <p>En 1896, en su primer partido de exhibición disputado en la Escuela Internacional de Formación de la YMCA (hoy Springfield College), Alfred Halstead, un observador, se percató de la naturaleza de volea de este deporte, que rápidamente pasó a denominarse voleibol. Las primeras reglas de este deporte se publicaron a principios del siglo XX, y la primera federación internacional (Fédération Internationale de Volleyball, la FIVB) se creó en 1947.</p>
+          <h3>¿Cuáles son las reglas del voleibol?</h3>
+          <p>La premisa del voleibol es sencilla: introducir el balón en el campo contrario sin que el adversario lo devuelva con éxito. Los jugadores de un equipo deben utilizar una combinación de no más de tres toques para devolver el balón al lado contrario de la red. Se anota un punto cuando el balón cae dentro de los límites de la pista o cuando se comete un error en el juego.</p>
+          <p>El primer equipo que logre 25 puntos por un margen de dos puntos gana el set, y cada partido sigue el formato al mejor de cinco sets. Si es necesario, se juega un quinto set a 15 puntos (se sigue exigiendo un margen de dos puntos para ganar).</p>
+          <h3>¿Cuánto dura un partido de voleibol?</h3>
+          <p>No hay un límite de tiempo establecido para un partido de voleibol, ya que los partidos se disputan por sets. No es raro ver partidos que duran hasta 90 minutos.</p>
+
+        <a href="#ARRIBA">VOLVER ARRIBA</a>
+
+    <a id="CICL"><h1>CICLISMO</h1></a>
+        <img src="Imagenes/cicli.jpg" align="middel" height="80" width="80">
+        <h3>Qué es el ciclismo</h3>
+        <p>El ciclismo corresponde al acto de montarse en una bicicleta y pedalear. Puede tener diferentes finalidades: para transportarse, competir, por placer o hacer ejercicio. Existen muchos tipos de bicicletas y cada uno de ellos se ajusta a los diferentes propósitos. Hay bicicletas que están diseñadas para competir en carreras, mientras que otras se diseñan para hacer ejercicio o para desplazarse.</p>
+        <p>El término "ciclismo" también se puede utilizar para describir el deporte referido a las carreras de bicicletas. Los ciclistas profesionales compiten en diferentes carreras cuya longitud varía: desde los sprints cortos hasta las carreras que duran varios días, es decir, se disputan por etapas. La carrera más famosa del ciclismo es el Tour de Francia, celebrado en cada mes de julio y que recorre más de 3.200 kilómetros.</p>
+        <h3>Historia del ciclismo</h3>
+        <p>Pese a que no hay una persona concreta que inventase el ciclismo, sí se puede determinar con mayor exactitud cuáles son sus orígenes. La primera prueba ciclista tuvo lugar en París, capital de Francia, el país en el que se disputa desde hace muchos años el Tour de Francia, la carrera ciclista más importante del mundo.</p>
+        <p>La primera prueba de la historia del ciclismo de competición se disputó en mayo de 1868. Fue en el parque de Saint-Cloud, situado a las afueras de París, en un circuito que tenía 1.200 metros de longitud. El británico James Moore fue el ganador de esta prueba en la que solo participaron 7 ciclistas con unas bicicletas de madera y con piñón fijo.</p>
+        <p>Un año después, se celebró la primera gran carrera, considerada más como prueba deportiva entre dos ciudades tal y como se entiende actualmente. Fue el 7 de noviembre de 1869: un centenar de ciclistas participaron, recorriendo una distancia de 123 kilómetros entre las dos ciudades francesas de París y Rouen. Nuevamente, James Moore fue el ganador de la carrera.</p>
+        <p>En 1870, se celebró en Italia una carrera en carretera cuyo trayecto era desde Florencia hasta Pistoia, con un recorrido de 33 kilómetros. El vencedor fue el ciclista estadounidense Rynner van Neste.</p>
+        <p>La Unión Ciclista Internacional (UCI), es decir, el máximo organismo del ciclismo actual, fue creado en abril de 1900 en París, con las federaciones de Francia, Estados Unidos, Bélgica, Suiza e Italia.</p>
+        <h3>Tipos de ciclismo</h3>
+        <p>Los diferentes tipos de ciclismo más populares que existen son el ciclismo de montaña, carreras de BMX y el ciclismo de carretera o ruta.</p>
+        <ul>
+          <li>
+            <h4>Ciclismo de montaña</h4>
+            <p>Es uno de los tipos más populares de ciclismo. Se trata de montar en bicicleta y pedalear por senderos de montañas y bosques. Suele ser por terrenos accidentados, por lo que es una buena forma de hacer deporte mientras disfrutas de hermosos paisajes y del aire libre. Tomando las precauciones necesarias, el ciclismo de montaña es un deporte divertido y seguro.</p>
+          </li>
+          <li>
+            <h4>Carreras de BMX</h4>
+            <p>Este tipo de ciclismo consiste en correr con unas bicicletas BMX en pistas apropiadas de pavimento o de tierra. Las carreras BMX de velocidad también se conocen como BICI Cross para competir contra otros rivales. También existe el tipo freestyle o estilo libre en las carreras de BMX, pero resulta peligroso, por lo que es fundamental tomar una serie de precauciones de seguridad.</p>
+          </li>
+          <li>
+            <h4>Ciclismo de carretera o ruta</h4>
+            <p>Es otro tipo de ciclismo popular. Consiste en montar en bicicleta sobre superficies pavimentadas, como es el caso de las carreteras y los carriles bici. Es una buena manera de hacer deporte respirando aire fresco y a gran velocidad. Tomando las debidas medidas de precaución, su práctica es segura.</p>
+          </li>
+        </ul>
+        <a href="#ARRIBA">VOLVER ARRIBA</a>
+
+    <a id="GOLF"><h1>GOLF</h1></a>
+        <img src="Imagenes/Golf.jpg" align="middel" height="80" width="80">
+        <h3>¿Qué es el golf?</h3>
+        <p>El golf es un deporte de competencia individual al aire libre cuyo objetivo es introducir una bola pequeña y liviana en un conjunto de hoyos distribuidos en el campo, empleando para ello el menor número de intentos posible. Para esto se usan un conjunto de palos de metal y de madera, diseñados con ángulos distintos y para cubrir diferentes longitudes. A quienes practican el golf se les conoce como golfistas.</p>
+        <p>A pesar de que se trata de un deporte de probable origen escocés, hay quienes sugieren que el nombre “golf” proviene del vocablo holandés kolf (“palo” o “garrote”). Otras etimologías, por el contrario, afirman que se trata en realidad de las iniciales de Gentlemen Only, Ladies Forbidden (“caballeros únicamente, damas prohibidas”), inscripción que solía pintarse en letreros situados en los campos destinados al deporte, que formaban parte de clubes sociales de caballeros.</p>
+        <p>El golf es un deporte sumamente popular en el mundo moderno y es considerado hoy en día como un deporte olímpico, gracias a su reinserción en los Juegos Olímpicos de Río de Janeiro en 2016. Hasta ese entonces había estado ausente de las Olimpíadas durante 112 años, desde los Juegos Olímpicos de San Luis de 1904.</p>
+        <p>Se trata, además, de un deporte asociado con las clases pudientes y en especial con la cultura anglosajona: la inmensa mayoría de sus campeones y jugadores destacados son estadounidenses, ingleses, sudafricanos o australianos.</p>
+        <h3>Origen e historia del golf.</h3>
+        <p>Los orígenes exactos del golf son inciertos. Se sabe que un deporte similar era practicado en Escocia y en Holanda a finales del Medioevo, cuyo nombre varía entre kolven, colf e incluso chole, en francés. Sin embargo, la primera mención escrita del golf se encuentra en dos actas del Parlamento de Escocia del siglo XV, en las que se prohibía la práctica de este deporte. Por esa razón se considera probable que fuera un invento escocés.</p>
+        <p>El golf estuvo prohibido en Escocia durante buena parte del siglo XV, hasta que la paz entre Inglaterra y Escocia permitió nuevamente su práctica, sobre todo a la luz de que el rey Jacobo IV lo practicaba, a juzgar por los registros de gastos en palos de golf hechos para el monarca. Gracias a esta asociación entre el deporte y la realeza, se popularizó en toda Gran Bretaña a lo largo del siglo XVI, al grado tal que el rey Jacobo VI nombró a William Mayne, el primer fabricante de palos del que se tiene noticia, como Royal Clubmaker, esto es, “fabricante de palos real”.</p>
+        <p>En ese siglo aparecieron también los primeros campos de golf, de los cuales el más antiguo es el Old Links en el Hipódromo de Musselburgh, en Escocia, en donde también se crearon en 1744 las primeras asociaciones de jugadores de golf: la Honourable Company of Edinburgh Golfers (“La Honorable Compañía de Golfistas de Edimburgo”) y The Royal and Ancient Golf Club of St. Andrews (“El real y antiguo club de golf de San Andrés”).</p>
+        <p>Al año siguiente, también en Gran Bretaña, se creó la primera reglamentación oficial de este deporte, y en 1857 apareció el primer manual de golf de la historia: “El manual del golfista”, escrito bajo seudónimo por el autor británico Henry Brougham Farnie (1836-1889)</p>
+        <p>El golf se popularizó primero en Europa y luego en otras geografías, especialmente de la mano del Imperio británico en el siglo XIX. Se jugó por primera vez en los Juegos Olímpicos en la edición de París de 1900 y luego en la edición de San Luis (Estados Unidos) de 1904. En ambas ediciones participaron únicamente Estados Unidos y Canadá, y solo con deportistas masculinos; luego no volvió a jugarse en el contexto olímpico hasta el 2016. El primer club femenino de golf se fundó en St. Andrews, Escocia, en 1967.</p>
+        <h3>Nociones básicas del golf</h3>
+        <p>El golf se juega de manera individual, pero pueden competir de 2 a 4 jugadores por partida, cada uno equipado con una cantidad de palos de entre 5 y 14 diferentes. La partida no tiene un tiempo establecido, sino que depende de lo que demoren los jugadores en hacer los (normalmente) 18 hoyos del campo. El punto de partida en este recorrido es siempre el mismo, una superficie pequeña y plana conocida como tee o tee box. Similarmente, la zona de llegada en donde se encuentra el hoyo, se denomina green.</p>
+        <p>Los jugadores compiten entre sí para ver quién ingresa su respectiva pelota en todos los agujeros usando la menor cantidad de golpes, para lo cual deben evitar los obstáculos y accidentes presentes en el campo, como pueden ser lagos, árboles, colinas y bancos de arena. Cada hoyo tiene normalmente una cantidad establecida de golpes con la que puede completarse (conocida como par, del inglés professional average result, “resultado promedio profesional”) y que será más alta dependiendo de la dificultad del campo.</p>
+        <ul><h4>Existen tres formatos de juego del golf:</h4>
+          <li>Stroke play. En este modo se cuenta el número de golpes totales por jugador, desde el inicio hasta el final del recorrido. Esto implica recorrer los 18 hoyos (en los grandes torneos, en cambio, son 72 hoyos, dado que duran 4 días). Una vez que todos los jugadores hayan completado el campo, el jugador que haya golpeado menos veces la bola será el ganador.</li>
+          <li>Match play. En este modo los jugadores asignan un número de hoyos a jugar (9 o 18, por lo general) y compiten para ver quién gana la mayoría. Para determinar quién ganó cada hoyo, se coteja el número de golpes que cada uno dio.</li>
+          <li>Stableford play. En este modo los jugadores se disputan hoyo por hoyo, asignando distintos puntos de acuerdo a la cantidad de golpes usado para culminarlo, es decir, dependiendo de si hace la cantidad justa de golpes, o menos. Al final del recorrido, quien tenga más puntos asignados ganará la competición.</li>
+        </ul>
+        <p>Las pelotas de golf tienen un diámetro de 42,67 mm en promedio y un peso de 45,93 g. En cada juego pueden usarse una, dos, tres o más capas, dependiendo del tipo de competición (profesional, amateur, etcétera). Los palos, por su parte, son propios de cada jugador, quien los lleva en una bolsa de cuero, instalada en un carro o portabolsas, o bien llevados por un caddie, o sea, un peón.</p>
+        <h3>Campo de juego de golf</h3>
+        <p>A diferencia de otros deportes, el campo de juego del golf no tiene medidas estandarizadas, sino que puede ser muy distinto dependiendo de su ubicación y su naturaleza. Se trata de superficies muy amplias, cada una conformada por:</p>
+        <ul>
+          <li>Un tee, punto de partida del recorrido.</li>
+          <li>Un green, punto de llegada.</li>
+          <li>Fairway, extensión lisa que separa los dos anteriores.</li>
+          <li>Rough, extensión más áspera que también se encuentra entre los dos primeros.</li>
+        </ul>
+        <p>Además, en cada campo puede haber un número variable de árboles, lagos, trampas de arena (bunker) y otros obstáculos.</p>
+        <p>Los campos de golf pueden clasificarse en dos categorías:</p>
+        <ul>
+          <li>Campos profesionales. Aquellos en los que la suma de las distancias de los 18 hoyos sobrepasa las 7000 yardas o 6400 metros.</li>
+          <li>Campos turísticos. Aquellos en los que la suma de las distancias de los 18 hoyos es inferior a las 7000 yardas o 6400 metros.</li>
+        </ul>
+        <p>Los 18 hoyos de un campo están normalmente identificados (hoyo 1, hoyo 2, hoyo 3) y en ocasiones pueden tener nombres propios, conmemorativos o especiales, y tener diseños propios. Asimismo, cada campo está delimitado por estacas de colores, para marcar el área de juego. Si la pelota de un jugador va a dar por fuera de los límites de juego (como el fondo de un lago), se le sumará un golpe de penalidad y podrá golpear otra pelota lo más cerca posible del lugar donde perdió la anterior.</p>
+        <a href="#ARRIBA">VOLVER ARRIBA</a>
+
+    <a id="TENIS"><h1>TENIS</h1></a>
+        <img src="Imagenes/Tenis.jpg" align="middel" height="80" width="80">
+        <h3>¿Qué es el tenis?</h3>
+        <p>En la actualidad, el deporte se juega en singles (un jugador contra otro), dobles (equipos de dos) y dobles mixtos (equipos mixtos), y cuenta con diferentes sistemas de puntuación en las competiciones internacionales.</p>
+        <p>El tenis tiene una larga historia, pero se cree que el nacimiento del juego que se practica hoy en día tuvo lugar en Inglaterra.</p>
+        <h3>¿Quién, dónde y cuándo se inventó el tenis?</h3>
+        <p>El primer antecedente reconocible del tenis, tal y como lo conocemos, fue el 'jeu de paume', jugado en la Francia del siglo XI. Se jugaba en el patio de un monasterio, utilizando las paredes y los tejados inclinados como parte de la pista y la palma de la mano para golpear la pelota.</p>
+        <p>A finales del siglo XIX, la popularidad del tenis sobre hierba había superado a la del croquet en Inglaterra. Por este motivo, el All England Croquet Club adoptó este deporte y designó algunos campos de croquet para que se utilizaran para jugar al tenis. Esta oferta natural de lugares para jugar, combinada con el marco ya existente para un juego de raqueta, dio lugar al nacimiento del juego moderno en Inglaterra.</p>
+        <p>En 1913, el tenis sobre hierba era cada vez más popular en todo el mundo. Por eso parecía natural que las federaciones nacionales de tenis existentes unieran sus fuerzas para garantizar una estructuración uniforme del juego. Se celebró una conferencia internacional entre 12 naciones en París y se creó la Federación Internacional de Tenis sobre Hierba (ILTF).</p>
+        <h3>¿Cuáles son las reglas del tenis?</h3>
+        <p>Se juega en una pista rectangular delimitada para singles y dobles. Los jugadores empuñan raquetas de cuerda y golpean la pelota por encima de una red de tenis reglamentaria, que divide la pista en dos.</p>
+        <p>Los jugadores se alternan en el saque (un movimiento por encima de la cabeza con la raqueta) y deben golpear la pelota en el cuadro de saque delimitado. Tienen un primer y un segundo saque para empezar cada punto, que se juega golpeando la pelota dentro de las líneas de la pista, ya sea en singles o en dobles, dependiendo de lo que se esté disputando.</p>
+        <p>La pelota sólo puede botar una vez, y debe golpearse después del bote o en el aire, lo que se conoce como volea.</p>
+
+        <a href="#ARRIBA">VOLVER ARRIBA</a>
+        
+    </div>
+
+  <div class="tab-content" id="info">
+    <h2>Historia del deporte</h2>
+    <p>historia del deporte comienza con la necesidad de la raza humana de correr, buscar alimento, protegerse o cazar, y esas actividades físicas han ido evolucionando hasta unas disciplinas deportivas regladas y organizadas que son las que imperan en la actualidad.</p>
+
+    <p>El deporte es el conjunto de actividades físicas que, además de mejorar la salud y la calidad de vida, nos ayudan a mantenernos en mejores condiciones tanto mentales como físicas. El aumento de la práctica deportiva, ya sea para competir o para mantenerse en forma, es notable, por lo que la demanda de profesionales también está creciendo, de ahí la idoneidad de estudiar el CAFD (Grado Oficial en Ciencias de la Actividad Física y del Deporte).</p>
+
+<h3>Evolución del deporte a lo largo de la historia</h3>
+Los inicios deportivos en la Edad Antigua
+<p>El deporte a lo largo de la historia ha acompañado al ser humano de un modo más o menos organizado, pero siempre ha estado presente. No obstante, su evolución ha sido significativa a lo largo de los siglos. En el paleolítico medio, unos 33.000 años a.C., se organizaban cacerías y danzas rituales cuya actividad física tenía una expresión meramente espiritual y de reconocimiento social. Después, con el paso de los años, cada civilización fue aportando sus juegos que en algunas ocasiones tenían un enfoque ligado a los dioses y en otros escenarios solo había una diversión por competir y conseguir logros.</p>
+
+<h3>Historia del deporte en Grecia</h3> 
+<p>La historia del deporte en Grecia es fundamental para entender cómo esas actividades físicas populares entre los habitantes de diversos pueblos se convirtieron en unas disciplinas deportivas. En el año 776 a.C. se celebraron los primeros Juegos Olímpicos de los que hay constancia. Este acontecimiento tenía lugar en los meses de verano cada cuatro años. Su origen responde a pacificar una época de crisis política y económica en un mundo griego en construcción. Los Juegos Olímpicos de la Antigüedad se celebraron durante más de 1.000 años, hasta que el emperador Teodoro I los prohibió, desapareciendo gradualmente. Fue en el siglo XIX, tras el descubrimiento del sitio de Olimpia, cuando regresó el interés por los juegos. Esto inspiró la instauración de los “Juegos Olímpicos de la Era Moderna” a partir del año 1896 en Grecia.</p>
+
+<h3>Historia del deporte en la Edad Media y Renacimiento</h3>
+<p>La evolución del deporte a lo largo de la historia tiene en la Edad Media su peor época. Tras la caída del imperio romano, la actividad deportiva disminuyó considerablemente. Sólo era practicada por la nobleza y los deportes más populares eran la soule (juego de pelota), las justas y los torneos o el juego de palma. No obstante, el siguiente capítulo de este resumen de la historia del deporte, el Renacimiento, supuso una luz en multitud de escenarios y la práctica deportiva fue uno de ellos. En esta etapa hay varios aspectos que son favorables a una nueva corriente de incremento de la actividad física y es que impera el culto a la salud y la importancia del cuerpo.</p>
+
+<h3>La Edad Contemporánea y su dimensión global</h3>
+<p>Los Juegos Olímpicos, tras un parón de siglos, regresaron en 1896 en Atenas. Cogían el testigo de aquellas competiciones griegas de la antigüedad, que sin duda marcaron la historia y el origen del deporte. No obstante, en esta segunda versión de los Juegos Olímpicos se produjo un salto cuantitativo y cualitativo hasta hoy en día. Los medios de comunicación de masas dieron una dimensión global al deporte, que es la conocemos en la actualidad, donde se ha generado una gran industria en torno a la actividad deportiva, ya sea federada o amateur.</p>
+
+  </div>
+
+  <script>
+    const urls = {
+      mundo: "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.mundodeportivo.com%2Frss%2Ffutbol.xml",
+      cnn: "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fcnnespanol.cnn.com%2Fcategory%2Fdeportes%2Ffeed%2F"
+    };
+
+    async function cargarNoticias(id, url) {
+      const contenedor = document.getElementById(id);
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        const data = await res.json();
+        if (data.status !== "ok") throw new Error("No se pudo cargar las noticias.");
+
+        contenedor.innerHTML = data.items.slice(0, 20).map(noticia => `
+          <div class="news-item">
+            <a href="${noticia.link}" target="_blank" rel="noopener noreferrer">${noticia.title}</a>
+            <p>${new Date(noticia.pubDate).toLocaleDateString()}</p>
+          </div>
+        `).join('');
+      } catch (e) {
+        console.error(e);
+        contenedor.innerHTML = "<p>Error al cargar noticias. Por favor, inténtelo más tarde.</p>";
+      }
+    }
+
+    function cambiarTab(index) {
+      document.querySelectorAll('.tab').forEach((tab, i) => {
+        tab.classList.toggle('active', i === index);
+        tab.setAttribute('aria-selected', i === index);
+      });
+      document.querySelectorAll('.tab-content').forEach((content, i) => {
+        content.classList.toggle('active', i === index);
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      cargarNoticias("mundo", urls.mundo);
+      cargarNoticias("cnn", urls.cnn);
+    });
+  </script>
+</body>
+</html>
